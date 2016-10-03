@@ -1,6 +1,12 @@
 package vistas;
+
+import Lógica.Conversion;
 import Lógica.Files;
+import Lógica.Llenado;
+import Lógica.objetos;
 import java.io.*;
+import java.util.ArrayList;
+import javax.naming.event.EventContext;
 import javax.swing.*;
 
 /*
@@ -8,16 +14,21 @@ import javax.swing.*;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author UDistrital
  */
 public class Principal extends javax.swing.JFrame {
+
     JFileChooser selectFile = new JFileChooser();
     File file;
     Files gestor = new Files();
-
+    
+    Conversion c = new Conversion();
+    Llenado l = new Llenado();
+      
+            
+            
     /**
      * Creates new form Principal
      */
@@ -37,6 +48,22 @@ public class Principal extends javax.swing.JFrame {
         btnFile = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtSequence = new javax.swing.JTextPane();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtMatriz = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtSecuencia1 = new javax.swing.JTextPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtSecuencia2 = new javax.swing.JTextPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtPuntaje = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtSecuenciaAlineada1 = new javax.swing.JTextPane();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtSecuenciaAlineada2 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +76,38 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(txtSequence);
 
+        jButton1.setText("Alinear Secuencias");
+        jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(txtMatriz);
+
+        jScrollPane3.setViewportView(txtSecuencia1);
+
+        jScrollPane4.setViewportView(txtSecuencia2);
+
+        jLabel1.setText("Secuencia 1");
+
+        jLabel2.setText("Secuencia 2");
+
+        jLabel3.setText("Puntaje alineacion");
+
+        txtPuntaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPuntajeActionPerformed(evt);
+            }
+        });
+
+        jScrollPane5.setViewportView(txtSecuenciaAlineada1);
+
+        jLabel4.setText("Secuencias Alineadas");
+
+        jScrollPane6.setViewportView(txtSecuenciaAlineada2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,18 +115,62 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnFile)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnFile)
+                        .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane6)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                                        .addComponent(txtPuntaje))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE))
+                                .addComponent(jScrollPane3)
+                                .addComponent(jScrollPane4))))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
                 .addComponent(btnFile)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
 
         pack();
@@ -75,17 +178,102 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
         // TODO add your handling code here:
-        if(selectFile.showDialog(this, "ABRIR ARCHIVO")== JFileChooser.APPROVE_OPTION){
+        objetos.reiniciar();
+        if (selectFile.showDialog(this, "ABRIR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
             file = selectFile.getSelectedFile();
-            if(file.canRead()){
-                if(file.getName().endsWith("txt")|| file.getName().endsWith("fasta") ){
+            if (file.canRead()) {
+                if (file.getName().endsWith("txt") || file.getName().endsWith("fasta")) {
                     String content = gestor.openFile(file);
+
                     txtSequence.setText(content);
                     txtSequence.disable();
+
+                    
+                    //Recorremos String para separar las secuencias en diferentes Array
+                    int i = 1;
+                    String caracter = String.valueOf(content.charAt(1));
+                    while (!caracter.equals(">") && i < content.length()) {
+                        if (caracter.equals("A") || caracter.equals("G")
+                                || caracter.equals("C") || caracter.equals("T")) {
+                            objetos.secuencia1.add(c.transcribir(caracter));
+                            i++;
+                            if (i < content.length()) {
+                                caracter = String.valueOf(content.charAt(i));
+                            }
+                        } else {
+                            i++;
+                            if (i < content.length()) {
+                                caracter = String.valueOf(content.charAt(i));
+                            }
+                        }
+                    }
+
+                    i++;
+                    caracter = String.valueOf(content.charAt(i));
+                    while (!caracter.equals(">") && i < content.length()) {
+                        if (caracter.equals("A") || caracter.equals("G")
+                                || caracter.equals("C") || caracter.equals("T")) {
+                            objetos.secuencia2.add(c.transcribir(caracter));
+                            i++;
+                            if (i < content.length()) {
+                                caracter = String.valueOf(content.charAt(i));
+                            }
+
+                        } else {
+                            i++;
+                            if (i < content.length()) {
+                                caracter = String.valueOf(content.charAt(i));
+                            }
+                        }
+                    }
+                    
+                    for (int j = 0; j < objetos.secuencia1.size(); j++) {
+                        txtSecuencia1.setText(txtSecuencia1.getText() + objetos.secuencia1.get(j));
+                    }
+                    
+                    for (int j = 0; j < objetos.secuencia2.size(); j++) {
+                        txtSecuencia2.setText(txtSecuencia2.getText() + objetos.secuencia2.get(j));
+                    }
                 }
             }
         }
     }//GEN-LAST:event_btnFileActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        objetos.matrizResultante = new int[objetos.secuencia1.size() + 1][objetos.secuencia2.size()+1];
+        l = new Llenado(objetos.secuencia1.size() + 1, objetos.secuencia2.size()+1);
+        objetos.matrizResultante = l.llenarMatriz();
+        
+        for (int i = 0; i < objetos.matrizResultante.length; i++) {
+            for (int j = 0; j < objetos.matrizResultante[i].length; j++) {
+                txtMatriz.setText(txtMatriz.getText() + objetos.matrizResultante[i][j]);
+            }
+            txtMatriz.setText(txtMatriz.getText() + "\n");
+        }
+        
+        txtMatriz.disable(); //Se muestra matriz de resultados        
+        int valor= objetos.consultarValor(objetos.matrizResultante.length - 1,objetos.matrizResultante[0].length - 1);
+        txtPuntaje.setText(txtPuntaje.getText() + valor);
+        
+        //Hacemos alineacion a la inversa
+        l.recorrerMatrizInversa();
+        
+        for (int i = objetos.secuenciaAlineada1.size() - 1; i >= 0 ; i--) {
+            txtSecuenciaAlineada1.setText(txtSecuenciaAlineada1.getText() + objetos.secuenciaAlineada1.get(i));
+        }
+        
+        for (int i = objetos.secuenciaAlineada2.size() - 1; i >= 0 ; i--) {
+            txtSecuenciaAlineada2.setText(txtSecuenciaAlineada2.getText() + objetos.secuenciaAlineada2.get(i));
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtPuntajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuntajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPuntajeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,7 +312,23 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFile;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextPane txtMatriz;
+    private javax.swing.JTextField txtPuntaje;
+    private javax.swing.JTextPane txtSecuencia1;
+    private javax.swing.JTextPane txtSecuencia2;
+    private javax.swing.JTextPane txtSecuenciaAlineada1;
+    private javax.swing.JTextPane txtSecuenciaAlineada2;
     private javax.swing.JTextPane txtSequence;
     // End of variables declaration//GEN-END:variables
 }
