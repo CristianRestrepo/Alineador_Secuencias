@@ -15,7 +15,7 @@ public class Llenado {
     private int fila;
     private int columna;
 
-    public Llenado() {      
+    public Llenado() {
     }
 
     public Llenado(int f, int c) {
@@ -57,17 +57,8 @@ public class Llenado {
                 } else if (fila == 0 || columna == 0) {
                     alinear(4);
                 }
-
             }
         }
-
-//        for (int i = f; i >= 0; i--) {
-//            for (int j = c; j >= 0; j--) {
-//                int[] posiciones = seleccionarMejorOpcionInversa(i, j);
-//                i = posiciones[0];
-//                j = posiciones[1];
-//            }
-//        }
     }
 
     public int seleccionarMejorOpcion(int f, int c) {
@@ -109,32 +100,32 @@ public class Llenado {
     public void alinear(int opcion) {
         switch (opcion) {
             case 1:
-                objetos.secuenciaAlineada1.add(Conversion.transcribirInversa(objetos.secuencia1.get(fila)));
-                objetos.secuenciaAlineada2.add(Conversion.transcribirInversa(objetos.secuencia2.get(columna)));
+                objetos.secuenciaAlineada1.add(Conversion.transcribirInversa(objetos.secuencia1.get(columna)));
+                objetos.secuenciaAlineada2.add(Conversion.transcribirInversa(objetos.secuencia2.get(fila)));
                 fila--;
                 columna--;
 
                 break;
             case 2:
-                objetos.secuenciaAlineada1.add(Conversion.transcribirInversa(objetos.secuencia1.get(fila)));
+                objetos.secuenciaAlineada1.add(Conversion.transcribirInversa(objetos.secuencia1.get(columna)));
                 objetos.secuenciaAlineada2.add("-");
-                fila--;
+                columna--;
 
                 break;
             case 3:
                 objetos.secuenciaAlineada1.add("-");
-                objetos.secuenciaAlineada2.add(Conversion.transcribirInversa(objetos.secuencia2.get(columna)));
-                columna--;
+                objetos.secuenciaAlineada2.add(Conversion.transcribirInversa(objetos.secuencia2.get(fila)));
+                fila--;
 
                 break;
             case 4:
                 if (fila < 0 && columna >= 0) {
-                    objetos.secuenciaAlineada1.add("-");
-                    objetos.secuenciaAlineada2.add(Conversion.transcribirInversa(objetos.secuencia2.get(columna)));
+                    objetos.secuenciaAlineada2.add("-");
+                    objetos.secuenciaAlineada1.add(Conversion.transcribirInversa(objetos.secuencia1.get(columna)));
                     columna--;
                 } else if (columna < 0 && fila >= 0) {
-                    objetos.secuenciaAlineada1.add(Conversion.transcribirInversa(objetos.secuencia1.get(fila)));
-                    objetos.secuenciaAlineada2.add("-");
+                    objetos.secuenciaAlineada2.add(Conversion.transcribirInversa(objetos.secuencia2.get(fila)));
+                    objetos.secuenciaAlineada1.add("-");
                     fila--;
                 }
                 break;

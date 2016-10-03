@@ -179,6 +179,13 @@ public class Principal extends javax.swing.JFrame {
     private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
         // TODO add your handling code here:
         objetos.reiniciar();
+        txtMatriz.setText("");
+        txtPuntaje.setText("");
+        txtSecuencia1.setText("");
+        txtSecuencia2.setText("");
+        txtSecuenciaAlineada1.setText("");
+        txtSecuenciaAlineada2.setText("");
+                
         if (selectFile.showDialog(this, "ABRIR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
             file = selectFile.getSelectedFile();
             if (file.canRead()) {
@@ -241,8 +248,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        objetos.matrizResultante = new int[objetos.secuencia1.size() + 1][objetos.secuencia2.size()+1];
-        l = new Llenado(objetos.secuencia1.size() + 1, objetos.secuencia2.size()+1);
+        objetos.matrizResultante = new int[objetos.secuencia2.size() + 1][objetos.secuencia1.size()+1];
+        l = new Llenado(objetos.secuencia2.size() + 1, objetos.secuencia1.size()+1);
         objetos.matrizResultante = l.llenarMatriz();
         
         for (int i = 0; i < objetos.matrizResultante.length; i++) {
@@ -265,9 +272,8 @@ public class Principal extends javax.swing.JFrame {
         
         for (int i = objetos.secuenciaAlineada2.size() - 1; i >= 0 ; i--) {
             txtSecuenciaAlineada2.setText(txtSecuenciaAlineada2.getText() + objetos.secuenciaAlineada2.get(i));
-        }
-        
-        
+        }     
+      
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
