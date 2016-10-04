@@ -7,6 +7,7 @@ import Lógica.MiRender;
 import Lógica.objetos;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.naming.event.EventContext;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +36,9 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
-
+    
+    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -291,24 +294,29 @@ public class Principal extends javax.swing.JFrame {
 
         //Hacemos alineacion a la inversa
         l.recorrerMatrizInversa();
-
-        int filas = (objetos.secuenciaAlineada1.size()) / 80 + 1;
+        
+        ArrayList<String> lista = (ArrayList<String>)objetos.secuenciaAlineada1.clone();
+        Collections.reverse(lista);
+        ArrayList<String> lista2 = (ArrayList<String>)objetos.secuenciaAlineada2.clone();
+        Collections.reverse(lista2);
+        
+        int filas = (lista.size()) / 80 + 1;
         filas *= 3;
-        String[][] alineamiento = new String[filas][objetos.secuenciaAlineada1.size()];
+        String[][] alineamiento = new String[filas][lista.size()];
         String[] titulos = new String[80];
 
         int row = 0;
         int cell = 0;
-        for (int i = objetos.secuenciaAlineada1.size() - 1; i >= 0; i--) {
-            if ((i != 0) && (i % 80 == 0)) {
+        for (int i = 0; i<lista.size(); ++i) {
+            if (i != 0 && i % 80 == 0) {
                 row += 3;
                 cell = 0;
             }
-            alineamiento[row][cell] = ("" + objetos.secuenciaAlineada1.get(i).charAt(0));
-            alineamiento[(row + 1)][cell] = ("" + objetos.secuenciaAlineada2.get(i).charAt(0));
+            alineamiento[row][cell] = ("" + lista.get(i));
+            alineamiento[(row + 1)][cell] = ("" + lista2.get(i));
             alineamiento[(row + 2)][cell] = " ";
             titulos[cell] = ("" + (cell + 1));
-            cell++;
+            ++cell;
         }
         this.jTResultados.setModel(new DefaultTableModel(alineamiento, titulos));
         this.jTResultados.setDefaultRenderer(Object.class, new MiRender(alineamiento, filas));
