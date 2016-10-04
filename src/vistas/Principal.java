@@ -248,9 +248,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        objetos.matrizResultante = new int[objetos.secuencia2.size() + 1][objetos.secuencia1.size()+1];
-        l = new Llenado(objetos.secuencia2.size() + 1, objetos.secuencia1.size()+1);
-        objetos.matrizResultante = l.llenarMatriz();
+        
+        int fila = objetos.secuencia2.size() + 1;
+        int columna = objetos.secuencia1.size() + 1;
+        //objetos.matrizResultante = new int[objetos.secuencia2.size() + 1][objetos.secuencia1.size()+1];
+        objetos.matrizResultante = new int[fila][columna];        
+        l = new Llenado();
+        l.llenarMatriz();
         
         for (int i = 0; i < objetos.matrizResultante.length; i++) {
             for (int j = 0; j < objetos.matrizResultante[i].length; j++) {
