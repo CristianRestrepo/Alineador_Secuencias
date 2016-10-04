@@ -25,20 +25,16 @@ public class Principal extends javax.swing.JFrame {
     JFileChooser selectFile = new JFileChooser();
     File file;
     Files gestor = new Files();
-    
+
     Conversion c = new Conversion();
     Llenado l = new Llenado();
-      
-            
-            
+
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
     }
-    
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,8 +49,6 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtSequence = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtMatriz = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtSecuencia1 = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -66,6 +60,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtMatriz = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,8 +83,6 @@ public class Principal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jScrollPane2.setViewportView(txtMatriz);
 
         jScrollPane3.setViewportView(txtSecuencia1);
 
@@ -119,35 +115,49 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane7.setViewportView(jTResultados);
 
+        jCheckBox1.setSelected(true);
+        jCheckBox1.setText("Cargar Matriz de valores");
+        jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox1StateChanged(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(txtMatriz);
+
+        jScrollPane8.setViewportView(jScrollPane2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnFile)
-                        .addComponent(jScrollPane1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane3)
-                                .addComponent(jScrollPane4)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(81, 81, 81)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                                .addComponent(txtPuntaje))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(293, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFile, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3)
+                            .addComponent(jScrollPane4)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPuntaje)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 81, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,21 +175,21 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(225, 225, 225))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,7 +202,7 @@ public class Principal extends javax.swing.JFrame {
         txtPuntaje.setText("");
         txtSecuencia1.setText("");
         txtSecuencia2.setText("");
-                
+
         if (selectFile.showDialog(this, "ABRIR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
             file = selectFile.getSelectedFile();
             if (file.canRead()) {
@@ -202,7 +212,6 @@ public class Principal extends javax.swing.JFrame {
                     txtSequence.setText(content);
                     txtSequence.disable();
 
-                    
                     //Recorremos String para separar las secuencias en diferentes Array
                     int i = 1;
                     String caracter = String.valueOf(content.charAt(1));
@@ -240,11 +249,11 @@ public class Principal extends javax.swing.JFrame {
                             }
                         }
                     }
-                    
+
                     for (int j = 0; j < objetos.secuencia1.size(); j++) {
                         txtSecuencia1.setText(txtSecuencia1.getText() + objetos.secuencia1.get(j));
                     }
-                    
+
                     for (int j = 0; j < objetos.secuencia2.size(); j++) {
                         txtSecuencia2.setText(txtSecuencia2.getText() + objetos.secuencia2.get(j));
                     }
@@ -255,59 +264,68 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        txtMatriz.setText("");
+        txtPuntaje.setText("");
+        jTResultados.setModel(new DefaultTableModel());
+        objetos.secuenciaAlineada1 = new ArrayList<>();
+        objetos.secuenciaAlineada2 = new ArrayList<>();
         
         int fila = objetos.secuencia2.size() + 1;
         int columna = objetos.secuencia1.size() + 1;
         //objetos.matrizResultante = new int[objetos.secuencia2.size() + 1][objetos.secuencia1.size()+1];
-        objetos.matrizResultante = new int[fila][columna];        
+        objetos.matrizResultante = new int[fila][columna];
         l = new Llenado();
         l.llenarMatriz();
-        
-        for (int i = 0; i < objetos.matrizResultante.length; i++) {
-            for (int j = 0; j < objetos.matrizResultante[i].length; j++) {
-                txtMatriz.setText(txtMatriz.getText() + objetos.matrizResultante[i][j]);
+
+        if (jCheckBox1.isSelected()) {
+            for (int i = 0; i < objetos.matrizResultante.length; i++) {
+                for (int j = 0; j < objetos.matrizResultante[i].length; j++) {
+                    txtMatriz.setText(txtMatriz.getText() + objetos.matrizResultante[i][j] + "\t");
+                }
+                txtMatriz.setText(txtMatriz.getText() + "\n");
             }
-            txtMatriz.setText(txtMatriz.getText() + "\n");
         }
-        
-        txtMatriz.disable(); //Se muestra matriz de resultados        
-        int valor= objetos.consultarValor(objetos.matrizResultante.length - 1,objetos.matrizResultante[0].length - 1);
+
+        int valor = objetos.consultarValor(objetos.matrizResultante.length - 1, objetos.matrizResultante[0].length - 1);
         txtPuntaje.setText(txtPuntaje.getText() + valor);
-        
+
         //Hacemos alineacion a la inversa
         l.recorrerMatrizInversa();
-        
-        int filas = (objetos.secuenciaAlineada1.size())/ 80 + 1;
-      
-      filas *= 3;
-      
-      String[][] alineamiento = new String[filas][objetos.secuenciaAlineada1.size()];
-      String[] titulos = new String[80];
-      
 
-      int row = 0;
-      int cell = 0;
-      for (int i = objetos.secuenciaAlineada1.size()-1; i >=0 ; i--)
-      {
-        if ((i != 0) && (i % 80 == 0))
-        {
-          row += 3;
-          cell = 0;
+        int filas = (objetos.secuenciaAlineada1.size()) / 80 + 1;
+        filas *= 3;
+        String[][] alineamiento = new String[filas][objetos.secuenciaAlineada1.size()];
+        String[] titulos = new String[80];
+
+        int row = 0;
+        int cell = 0;
+        for (int i = objetos.secuenciaAlineada1.size() - 1; i >= 0; i--) {
+            if ((i != 0) && (i % 80 == 0)) {
+                row += 3;
+                cell = 0;
+            }
+            alineamiento[row][cell] = ("" + objetos.secuenciaAlineada1.get(i).charAt(0));
+            alineamiento[(row + 1)][cell] = ("" + objetos.secuenciaAlineada2.get(i).charAt(0));
+            alineamiento[(row + 2)][cell] = " ";
+            titulos[cell] = ("" + (cell + 1));
+            cell++;
         }
-        alineamiento[row][cell] = ("" + objetos.secuenciaAlineada1.get(i).charAt(i));
-        alineamiento[(row + 1)][cell] = ("" + objetos.secuenciaAlineada2.get(i).charAt(i));
-        alineamiento[(row + 2)][cell] = " ";
-        titulos[cell] = ("" + (cell + 1));
-        cell++;
-      }
-      this.jTResultados.setModel(new DefaultTableModel(alineamiento, titulos));
-      
-      this.jTResultados.setDefaultRenderer(Object.class, new MiRender(alineamiento, filas));
+        this.jTResultados.setModel(new DefaultTableModel(alineamiento, titulos));
+        this.jTResultados.setDefaultRenderer(Object.class, new MiRender(alineamiento, filas));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtPuntajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuntajeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPuntajeActionPerformed
+
+    private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
+        // TODO add your handling code here:
+        if (jCheckBox1.isSelected()) {
+            txtMatriz.enable();
+        } else {
+            txtMatriz.disable();
+        }
+    }//GEN-LAST:event_jCheckBox1StateChanged
 
     /**
      * @param args the command line arguments
@@ -347,6 +365,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFile;
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -356,6 +375,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTextPane txtMatriz;
     private javax.swing.JTextField txtPuntaje;
