@@ -5,6 +5,9 @@
  */
 package alineadorsecuencias;
 
+import javax.swing.JFrame;
+import vistas.Principal;
+
 /**
  *
  * @author UDistrital
@@ -16,6 +19,9 @@ public class AlineadorSecuencias {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Principal p = new Principal();
+        p.setVisible(true);
+
     }
     
 }
